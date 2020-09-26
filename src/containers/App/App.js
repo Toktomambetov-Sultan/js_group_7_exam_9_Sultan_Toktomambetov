@@ -4,6 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import Main from "../Main/Main";
 import "./App.css";
 import AddNewContactBlock from "./../AddNewContactBlock/AddNewContactBlock"
+import { EditPage } from "../EditPage/EditPage";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         <Switch>
           <Route path="/add" exact component={AddNewContactBlock} />
           <Route path="/" exact component={Main} />
+          <Route path="/edit" exact component={EditPage} />
+
         </Switch>
       </Layout>
     </div>

@@ -1,23 +1,17 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import ContactForm from "../../components/ContactForm/ContactForm";
-import {
-  addNewContact,
-  changeCurrentContact,
-  initCurrentContact,
-} from "../../store/actions";
+import { changeContact, changeCurrentContact } from "../../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-const AddNewContactBlock = ({ history }) => {
+export const EditPage = ({ history }) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(initCurrentContact());
-  }, [dispatch]);
+
   const changeCurrentContactHandler = (currentContact) =>
     dispatch(changeCurrentContact(currentContact));
 
-  const addNewContactHandler = async (currentContact) =>
-    await dispatch(addNewContact(currentContact));
+  const changeContactHandler = async (currentContact) =>
+    await dispatch(changeContact(currentContact));
 
   const onChange = (event) => {
     const { value, id: name } = event.target;
@@ -25,7 +19,7 @@ const AddNewContactBlock = ({ history }) => {
   };
   const onSubmit = async (event) => {
     event.preventDefault();
-    await addNewContactHandler(state.currentContact);
+    await changeContactHandler(state.currentContact);
     history.push({
       pathname: "/",
     });
@@ -45,5 +39,3 @@ const AddNewContactBlock = ({ history }) => {
     </div>
   );
 };
-
-export default AddNewContactBlock;

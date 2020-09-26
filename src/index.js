@@ -5,11 +5,11 @@ import * as serviceWorker from "./serviceWorker";
 import App from "./containers/App/App";
 import { BrowserRouter } from "react-router-dom";
 import reducer from "./store/reducer";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
-
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
