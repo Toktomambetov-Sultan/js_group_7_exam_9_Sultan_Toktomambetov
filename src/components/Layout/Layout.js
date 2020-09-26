@@ -1,16 +1,13 @@
 import {
   AppBar,
-  Button,
   Container,
-  createMuiTheme,
   makeStyles,
-  ThemeProvider,
   Toolbar,
   Typography,
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles((theme) => ({
   Toolbar: {
@@ -39,7 +36,7 @@ const Layout = ({ children }) => {
               <Typography variant="h5" noWrap>
                 Contacts
               </Typography>
-              <Link exact to="/add" className={classes.Link}>
+              <Link to="/add" className={classes.Link}>
                 <Typography variant="h6">add new contact</Typography>
               </Link>
             </Toolbar>

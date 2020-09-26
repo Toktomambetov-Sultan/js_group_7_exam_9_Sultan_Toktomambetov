@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
+import Main from "../Main/Main";
 import "./App.css";
 
 function App() {
@@ -8,8 +9,8 @@ function App() {
     <div>
       <Layout>
         <Switch>
-          <Route path="/" />
-          <Route path="/add" />
+          <Route path="/" exact component={Main} />
+          <Route path="/add"  />
         </Switch>
       </Layout>
     </div>
