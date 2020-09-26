@@ -2,11 +2,11 @@ import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import FormInput from "./FormInput/FormInput";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,20 +25,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ContactForm = (props) => {
+const ContactForm = ({ onSubmit, onChange }) => {
   const classes = useStyles();
-
+  const currentContact = useSelector((state) => state.currentContact);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <form Validate>
+        <form validate="true" onChange={onChange} onSubmit={onSubmit}>
           <Grid container spacing={2}>
-            <FormInput label="name" id="name" />
-            <FormInput label="Phone number" id="phoneNumber" />
-            <FormInput label="Email Adress" id="email" />
-            <FormInput label="URL for image" id="imgSrc">
-              <Avatar className={classes.avatar} alt="Persons image" src={""} />
+            <FormInput
+              value={currentContact.name}
+              label="name"
+              id="name"
+              required
+            />
+            <FormInput
+              value={currentContact.phoneNumber}
+              label="Phone number"
+              id="phoneNumber"
+              required
+              type="number"
+            />
+            <FormInput
+              value={currentContact.email}
+              label="Email Adress"
+              id="email"
+            />
+            <FormInput
+              value={currentContact.imgSrc}
+              label="URL for image"
+              id="imgSrc"
+            >
+              <Avatar className={classes.avatar} alt="Persons image" src={currentContact.imgSrc} />
             </FormInput>
           </Grid>
           <Button
@@ -48,7 +67,7 @@ const ContactForm = (props) => {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            continue
           </Button>
         </form>
       </div>

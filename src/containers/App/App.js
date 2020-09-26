@@ -10,8 +10,8 @@ function App() {
     <div>
       <Layout>
         <Switch>
-          <Route path="/" exact component={Main} />
           <Route path="/add" exact component={AddNewContactBlock} />
+          <Route path="/" exact component={Main} />
         </Switch>
       </Layout>
     </div>
