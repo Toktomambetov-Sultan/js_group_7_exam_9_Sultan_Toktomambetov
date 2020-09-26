@@ -23,10 +23,19 @@ const AddNewContactBlock = ({ history }) => {
       pathname: "/",
     });
   };
+  const onCancel = () => {
+    history.push({
+      pathname: "/",
+    });
+  };
 
   return (
     <div>
-      <ContactForm onChange={onChange} onSubmit={onSubmit} />
+      <ContactForm
+        onChange={onChange}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+      />
     </div>
   );
 };

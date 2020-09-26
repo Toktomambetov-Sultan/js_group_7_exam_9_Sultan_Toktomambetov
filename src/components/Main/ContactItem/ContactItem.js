@@ -7,6 +7,7 @@ import {
 } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import React from "react";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   Card: {
@@ -38,11 +39,9 @@ const ContactItem = (props) => {
     <ListItem>
       <Card className={classes.Card} onClick={props.onClick}>
         <CardContent className={classes.CardContent}>
-          <div className="img">
-            <img src={props.imgSrc} alt={props.name} />
-          </div>
+          <Avatar alt="Persons image" src={props.currentContact.imgSrc} />
           <Typography variant="h5" className="ContactName">
-            {props.name}
+            {props.currentContact.name}
           </Typography>
         </CardContent>
       </Card>

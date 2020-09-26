@@ -20,12 +20,12 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(15),
     height: theme.spacing(15),
   },
-  submit: {
+  btn: {
     margin: theme.spacing(3, 0, 2),
   },
 }));
 
-const ContactForm = ({ onSubmit, onChange }) => {
+const ContactForm = ({ onSubmit, onChange, onCancel }) => {
   const classes = useStyles();
   const currentContact = useSelector((state) => state.currentContact);
   return (
@@ -57,18 +57,37 @@ const ContactForm = ({ onSubmit, onChange }) => {
               label="URL for image"
               id="imgSrc"
             >
-              <Avatar className={classes.avatar} alt="Persons image" src={currentContact.imgSrc} />
+              <Avatar
+                className={classes.avatar}
+                alt="Persons image"
+                src={currentContact.imgSrc}
+              />
             </FormInput>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            continue
-          </Button>
+          <Grid container justify="space-between">
+            <Grid item xs={5}>
+              <Button
+                onClick={onCancel}
+                variant="contained"
+                color="secondary"
+                fullWidth
+                className={classes.btn}
+              >
+                cancel
+              </Button>
+            </Grid>
+            <Grid item xs={5}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                className={classes.btn}
+              >
+                continue
+              </Button>
+            </Grid>
+          </Grid>
         </form>
       </div>
     </Container>
