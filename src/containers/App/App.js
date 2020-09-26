@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import Main from "../Main/Main";
 import "./App.css";
+import AddNewContactBlock from "./../AddNewContactBlock/AddNewContactBlock"
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/add" />
+          <Route path="/add" exact component={AddNewContactBlock} />
         </Switch>
       </Layout>
     </div>
