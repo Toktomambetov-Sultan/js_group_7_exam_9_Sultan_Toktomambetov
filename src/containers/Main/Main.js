@@ -1,28 +1,31 @@
 import React, { useState } from "react";
 import { Container, List } from "@material-ui/core";
-import PhoneIcon from "@material-ui/icons/Phone";
-import MailIcon from "@material-ui/icons/Mail";
 import ContactItem from "../../components/Main/ContactItem/ContactItem";
-import { Link, NavLink } from "react-router-dom";
 import ModalWin from "../../components/ModalWin/ModalWin";
+import { useSelector } from "react-redux";
 
 const Main = () => {
-  const [isOpenModal, setIsOpenModal] = useState(true);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const state = useSelector((state) => state);
   const closeModal = () => setIsOpenModal(false);
-  const currentContact = {
-    name: "",
-    imgSrc: "",
-    email: "",
-    phoneNumber: "",
-  };
   return (
     <div>
       <Container>
         <List>
-          <ContactItem />
+          {state.contacts.map((contact, index) => (
+            <ContactItem
+              key={index}
+              name={contact.name}
+              imgSrc={contact.imgSrc}
+            />
+          ))}
         </List>
       </Container>
-      <ModalWin open={isOpenModal} currentContact={currentContact} />
+      <ModalWin
+        open={isOpenModal}
+        onClose={closeModal}
+        currentContact={state.currentContact}
+      />
     </div>
   );
 };
